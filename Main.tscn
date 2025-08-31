@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0tejcn6xrtpc"]
+
+[ext_resource type="Script" uid="uid://57ifvb68u5cl" path="res://graph_edit.gd" id="1_uu6xs"]
+[ext_resource type="Script" uid="uid://cwon4hm3thmrv" path="res://node_create_button.gd" id="2_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://c8kl5ttot2dky" path="res://quest_node.tscn" id="3_fos0i"]
+[ext_resource type="PackedScene" uid="uid://wu4mqx3hgx4n" path="res://click_node.tscn" id="4_3dxm6"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GraphEdit" type="GraphEdit" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+grid_pattern = 1
+snapping_enabled = false
+right_disconnects = true
+minimap_enabled = false
+script = ExtResource("1_uu6xs")
+
+[node name="VBoxContainer" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Menu:"
+horizontal_alignment = 1
+
+[node name="FoldableContainer" type="FoldableContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+title = "System Nodes"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/VBoxContainer/FoldableContainer"]
+layout_mode = 2
+
+[node name="QuestButton" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer/FoldableContainer/VBoxContainer"]
+layout_mode = 2
+text = "Add Quest Node"
+script = ExtResource("2_cm0pq")
+node_to_create = ExtResource("3_fos0i")
+metadata/_custom_type_script = "uid://cwon4hm3thmrv"
+
+[node name="ClickButton" type="Button" parent="HBoxContainer/VBoxContainer/VBoxContainer/FoldableContainer/VBoxContainer"]
+layout_mode = 2
+text = "Add Click Generator
+"
+script = ExtResource("2_cm0pq")
+node_to_create = ExtResource("4_3dxm6")
+metadata/_custom_type_script = "uid://cwon4hm3thmrv"
+
+[connection signal="connection_request" from="HBoxContainer/GraphEdit" to="HBoxContainer/GraphEdit" method="_on_connection_request"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/FoldableContainer/VBoxContainer/QuestButton" to="HBoxContainer/VBoxContainer/VBoxContainer/FoldableContainer/VBoxContainer/QuestButton" method="_on_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/FoldableContainer/VBoxContainer/ClickButton" to="HBoxContainer/VBoxContainer/VBoxContainer/FoldableContainer/VBoxContainer/ClickButton" method="_on_pressed"]

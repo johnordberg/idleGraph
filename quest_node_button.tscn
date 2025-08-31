@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbtnt0pp3nlj7"]
+
+[ext_resource type="Script" uid="uid://cwon4hm3thmrv" path="res://node_create_button.gd" id="1_fsniu"]
+[ext_resource type="PackedScene" uid="uid://c8kl5ttot2dky" path="res://quest_node.tscn" id="2_tdxn6"]
+
+[node name="NodeCreateButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Add Quest Node"
+alignment = 0
+script = ExtResource("1_fsniu")
+node_to_create = ExtResource("2_tdxn6")
+metadata/_custom_type_script = "uid://cwon4hm3thmrv"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

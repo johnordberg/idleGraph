@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8kl5ttot2dky"]
+
+[ext_resource type="Script" uid="uid://jgiuwun3cepv" path="res://quest_node.gd" id="1_ou8w3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_875wb"]
+bg_color = Color(0.88235295, 0.69803923, 0, 1)
+
+[node name="Quest Node" type="GraphNode" node_paths=PackedStringArray("quest_label", "quest_progress")]
+custom_minimum_size = Vector2(300, 150)
+offset_top = 2.0
+offset_right = 300.0
+offset_bottom = 152.0
+resizable = true
+title = "Quest"
+ignore_invalid_connection_type = true
+slot/0/left_enabled = true
+slot/0/left_type = 1
+slot/0/left_color = Color(1, 0.78431374, 0, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_ou8w3")
+quest_label = NodePath("Inner/Label")
+quest_progress = NodePath("Inner/ProgressBar")
+
+[node name="Inner" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="Inner"]
+layout_mode = 2
+text = "Current Quest"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Inner"]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_875wb")
+rounded = true
