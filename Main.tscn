@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0tejcn6xrtpc"]
+[gd_scene load_steps=6 format=3 uid="uid://d0tejcn6xrtpc"]
 
+[ext_resource type="Script" uid="uid://duyd6hn4b7ujc" path="res://main.gd" id="1_fos0i"]
 [ext_resource type="Script" uid="uid://57ifvb68u5cl" path="res://graph_edit.gd" id="1_uu6xs"]
 [ext_resource type="Script" uid="uid://cwon4hm3thmrv" path="res://node_create_button.gd" id="2_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://c8kl5ttot2dky" path="res://quest_node.tscn" id="3_fos0i"]
@@ -14,6 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
+script = ExtResource("1_fos0i")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1

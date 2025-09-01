@@ -1,4 +1,4 @@
-extends GraphNode
+extends IdleGraphNode
 
 var graph: GraphEdit
 
